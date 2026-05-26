@@ -51,18 +51,18 @@ STYLE_RULES: list[tuple[str, str]] = [
     (r"\b(ventures?|seed(\s+fund)?|early[\-\s]?stage|early\s+capital)\b", "Venture Capital"),
     (r"\b(growth\s+(equity|capital|partners|fund|investors)|growth\b)\b", "Growth"),
     (r"\b(credit|debt\s+fund|mezzanine|direct\s+lending|private\s+debt|distressed\s+debt|yield)\b", "Credit"),
-    (r"\b(distressed|special\s+situations?|recovery|workout|turnaround)\b", "Distressed / Special Situations"),
+    (r"\b(distressed|special\s+situations?|recovery|workout|turnaround)\b", "Distressed"),
     # 'Opportunities' / 'Opportunity' tout seul → trop générique, on ne tag pas
     # (utilisé par Blackstone Tactical Opportunities = généraliste opportuniste)
 
     # --- Secteur (verticales explicites) ---
-    (r"\b(clean\s+energy|cleantech|renewable|green\s+energy|sustainable\s+energy)\b", "Cleantech / Renewable"),
-    (r"\b(energy|power|oil\b|gas\b|natural\s+resources)\b", "Energy / Power"),
+    (r"\b(clean\s+energy|cleantech|renewable|green\s+energy|sustainable\s+energy)\b", "Cleantech"),
+    (r"\b(energy|power|oil\b|gas\b|natural\s+resources)\b", "Energy"),
     (r"\b(real\s+estate|reit\b|property\s+fund)\b", "Real Estate"),
     (r"\b(infrastructure|infra\b)\b", "Infrastructure"),
     (r"\b(tech(nology)?|software|saas|digital|internet|fintech|cyber)\b", "Technology"),
     (r"\b(health(care)?|medical|medtech)\b", "Healthcare"),
-    (r"\b(bio(pharm)?|biotech(nology)?|pharma(ceutical)?|life\s+sciences)\b", "Biotech / Pharma"),
+    (r"\b(bio(pharm)?|biotech(nology)?|pharma(ceutical)?|life\s+sciences)\b", "Biotech"),
     (r"\b(consumer\s+fund|retail\s+fund)\b", "Consumer"),
     (r"\b(industrial\s+fund)\b", "Industrial"),
 ]

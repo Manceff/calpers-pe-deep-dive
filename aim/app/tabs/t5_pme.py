@@ -23,8 +23,12 @@ def render() -> None:
     st.markdown(
         "*PME Kaplan-Schoar = (Σ distributions × I_T/I_t + NAV_T) / (Σ calls × I_T/I_t). "
         "PME > 1 signifie que le fonds bat l'indice.*  \n"
-        "*Estimé : flux reconstitués depuis cumuls, timing fin-de-trimestre. "
-        "Indice utilisé : ^SP500TR (S&P 500 Total Return) via yfinance, cache local.*"
+        "*Estimé : CalPERS publie à chaque snapshot des **flux cumulés** "
+        "(cash in et cash out cumulés depuis l'origine du fonds), pas les flux unitaires datés. "
+        "Les calls et distributions de chaque période sont donc **reconstitués par différence "
+        "entre deux snapshots consécutifs** et datés en fin de trimestre — c'est une "
+        "approximation standard mais qui lisse les flux intra-période. "
+        "Indice utilisé : ^SP500TR (S&P 500 Total Return) via yfinance.*"
     )
 
     stats = q("""

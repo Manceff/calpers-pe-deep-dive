@@ -24,8 +24,8 @@ from aim.pipeline._classify import detect_themes, extract_fund_series, extract_g
     ("CVC European Equity Partners III LP", ["Europe"], []),
     ("HongShan Capital Venture Fund IX, L.P.", ["China"], ["Venture Capital"]),
     # --- Thématique sectorielle ---
-    ("Riverstone Global Energy and Power Fund V, L.P.", [], ["Energy / Power"]),
-    ("CalPERS Clean Energy & Technology Fund, LLC", [], ["Cleantech / Renewable", "Energy / Power", "Technology"]),
+    ("Riverstone Global Energy and Power Fund V, L.P.", [], ["Energy"]),
+    ("CalPERS Clean Energy & Technology Fund, LLC", [], ["Cleantech", "Energy", "Technology"]),
     ("Advent Global Technology II Limited Partnership", [], ["Technology"]),
     # --- Thématique style ---
     ("AlpInvest Secondaries VII", [], ["Secondaries"]),

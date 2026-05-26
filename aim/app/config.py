@@ -45,16 +45,16 @@ STYLE_COLOR_MAP = {
     "Continuation": "#b5a574",
     "Co-Investment": "#2a4a6a",
     "Fund of Funds": "#5a7090",
-    "Energy / Power": "#8a7050",
-    "Cleantech / Renewable": "#7a6040",
+    "Energy": "#8a7050",
+    "Cleantech": "#7a6040",
     "Real Estate": "#605040",
     "Infrastructure": "#404a55",
     "Technology": "#6a4a3a",
     "Healthcare": "#9c2a2a",
-    "Biotech / Pharma": "#7a3a4a",
+    "Biotech": "#7a3a4a",
     "Consumer": "#cab490",
     "Industrial": "#5a5a5a",
-    "Distressed / Special Situations": "#3a3a3a",
+    "Distressed": "#3a3a3a",
 }
 
 # Layout Plotly commun — legend volontairement absent (chaque tab peut l'override).
