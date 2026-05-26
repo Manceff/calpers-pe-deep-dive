@@ -1,0 +1,66 @@
+{
+  "_schema": "v1",
+  "_description": "Index des notes de contexte marché. Le Streamlit charge ce fichier pour insérer un bandeau contextuel sur les snapshots/périodes correspondants.",
+  "notes": [
+    {
+      "id": "2014_end_qe",
+      "title": "Fin du QE — peak dry powder",
+      "snapshots": ["2014-12-31"],
+      "tags": ["macro", "regime"]
+    },
+    {
+      "id": "2016_oil_brexit",
+      "title": "Brexit, choc pétrolier, ralentissement Chine",
+      "snapshots": ["2016-06-30", "2016-09-30"],
+      "tags": ["geopolitique", "energy", "europe"]
+    },
+    {
+      "id": "2018_peak_valuations",
+      "title": "Pic de valorisations PE — megafund era",
+      "snapshots": ["2018-03-31", "2018-09-30"],
+      "tags": ["valuations", "megafund"]
+    },
+    {
+      "id": "2020_covid_drawdown",
+      "title": "Covid Q1 2020 — drawdown initial des marks",
+      "snapshots": ["2020-03-31"],
+      "tags": ["crisis", "drawdown"]
+    },
+    {
+      "id": "2020_2021_zirp_boom",
+      "title": "ZIRP & stimulus — vintage 2021 record, boom secondaires",
+      "snapshots": ["2020-12-31", "2021-06-30", "2021-09-30", "2021-12-31"],
+      "tags": ["zirp", "secondaries", "boom"]
+    },
+    {
+      "id": "2022_tech_reset",
+      "title": "Inflation, hausses de taux, reset tech",
+      "snapshots": ["2022-12-31"],
+      "tags": ["crisis", "tech", "rate-hike"]
+    },
+    {
+      "id": "2023_dpi_compression",
+      "title": "Compression du DPI, continuation funds en boom",
+      "snapshots": ["2023-06-30"],
+      "tags": ["dpi", "secondaries", "continuation"]
+    },
+    {
+      "id": "2024_2025_ai_fundraising",
+      "title": "AI hype, fundraising difficile, reset des marks",
+      "snapshots": ["2024-06-30", "2024-09-30", "2024-12-31", "2025-03-31", "2025-09-30"],
+      "tags": ["ai", "fundraising", "reset"]
+    },
+    {
+      "id": "calpers_divestment_fossil",
+      "title": "CalPERS — divestment du fossile (2022)",
+      "snapshots": ["2022-12-31"],
+      "tags": ["calpers-specific", "energy", "esg"]
+    },
+    {
+      "id": "calpers_coinvest_strategy",
+      "title": "CalPERS — pivot stratégique vers le co-investissement",
+      "snapshots": ["2020-12-31", "2021-12-31", "2024-12-31"],
+      "tags": ["calpers-specific", "co-investment", "strategy"]
+    }
+  ]
+}
