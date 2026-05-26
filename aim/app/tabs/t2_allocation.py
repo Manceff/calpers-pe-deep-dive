@@ -108,7 +108,11 @@ def render() -> None:
         fig.update_traces(line=dict(width=0))
         fig.update_layout(
             **PLOTLY_LAYOUT,
-            title=dict(text="Capital engagé par zone géographique", font=dict(size=14)),
+            title=dict(
+                text="Capital engagé par zone géographique"
+                     "<br><sub><i>(classification extraite du nom de chaque fonds)</i></sub>",
+                font=dict(size=14),
+            ),
             xaxis_title="", yaxis_title="USD",
             height=400, hovermode="x unified",
         )
@@ -126,7 +130,11 @@ def render() -> None:
         fig.update_traces(line=dict(width=0))
         fig.update_layout(
             **PLOTLY_LAYOUT,
-            title=dict(text="Capital engagé par style et secteur", font=dict(size=14)),
+            title=dict(
+                text="Capital engagé par style et secteur"
+                     "<br><sub><i>(classification extraite du nom de chaque fonds)</i></sub>",
+                font=dict(size=14),
+            ),
             xaxis_title="", yaxis_title="USD",
             height=400, hovermode="x unified",
         )
