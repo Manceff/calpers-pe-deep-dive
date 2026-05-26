@@ -12,11 +12,12 @@ venv/
 .env
 .env.local
 
-# Data artifacts (regenerable from xlsx source)
-aim/data/*.parquet
-aim/data/*.duckdb
+# Data artifacts WAL et review (regenerables au runtime)
 aim/data/*.duckdb.wal
 aim/data/llm_review.csv
+# NB : master_long.parquet, dim_fund.parquet et aim.duckdb sont VOLONTAIREMENT
+# versionnés pour permettre à Streamlit Cloud de démarrer sans relancer le
+# pipeline. Les snapshots CalPERS sont figés à 2025-09-30 — pas de drift.
 
 # Streamlit
 .streamlit/secrets.toml

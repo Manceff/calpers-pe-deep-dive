@@ -14,7 +14,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 import pandas as pd  # noqa: E402
 import streamlit as st  # noqa: E402
 
-from aim.app.config import APP_SUBTITLE, APP_TITLE, FIXED_SNAPSHOT, GLOBAL_CSS  # noqa: E402
+from aim.app.config import APP_TITLE, FIXED_SNAPSHOT, GLOBAL_CSS  # noqa: E402
 from aim.app.tabs import t1_cockpit, t2_allocation, t3_fonds, t4_vintages, t5_pme, t6_data  # noqa: E402
 
 st.set_page_config(
@@ -37,7 +37,6 @@ def main() -> None:
         f"""
         <div class="aim-hero">
           <div class="aim-hero-title">{APP_TITLE}</div>
-          <div class="aim-hero-subtitle">{APP_SUBTITLE}</div>
         </div>
         """,
         unsafe_allow_html=True,
