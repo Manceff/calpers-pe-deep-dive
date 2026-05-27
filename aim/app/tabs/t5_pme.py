@@ -91,7 +91,7 @@ def render() -> None:
         xaxis_title="Vintage year", yaxis_title="PME (×)",
         height=450, hovermode="x unified",
     )
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width='stretch')
 
     st.markdown(
         "<div style='font-size:0.85rem;color:#5a5a5a;margin-top:0.5rem'>"
@@ -127,7 +127,7 @@ def render() -> None:
         xaxis_title="PME Kaplan-Schoar", yaxis_title="Nombre de fonds",
         height=400, bargap=0.05,
     )
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width='stretch')
 
     st.divider()
 
@@ -138,11 +138,11 @@ def render() -> None:
     top = top.rename(columns={"fund_name_canonical": "Fonds", "vintage_year": "Vintage",
                               "gp_family": "GP", "pme_ks": "PME"})
     c1.markdown("**Top 15 PME**")
-    c1.dataframe(top, hide_index=True, use_container_width=True)
+    c1.dataframe(top, hide_index=True, width='stretch')
 
     bot = pme_all.nsmallest(15, "pme_ks")[["fund_name_canonical", "vintage_year", "gp_family", "pme_ks"]]
     bot["pme_ks"] = bot["pme_ks"].apply(lambda x: f"{x:.2f}")
     bot = bot.rename(columns={"fund_name_canonical": "Fonds", "vintage_year": "Vintage",
                               "gp_family": "GP", "pme_ks": "PME"})
     c2.markdown("**Bottom 15 PME**")
-    c2.dataframe(bot, hide_index=True, use_container_width=True)
+    c2.dataframe(bot, hide_index=True, width='stretch')

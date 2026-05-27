@@ -190,7 +190,7 @@ def render() -> None:
             legend=LEGEND_BOTTOM,
         )
     )
-    c1.plotly_chart(fig, use_container_width=True)
+    c1.plotly_chart(fig, width='stretch')
 
     if series[["dpi", "rvpi", "tvpi"]].notna().any().any():
         fig = go.Figure()
@@ -219,7 +219,7 @@ def render() -> None:
                 legend=LEGEND_BOTTOM,
             )
         )
-        c2.plotly_chart(fig, use_container_width=True)
+        c2.plotly_chart(fig, width='stretch')
     else:
         c2.markdown(
             f"<div style='height:{CHART_HEIGHT}px;display:flex;align-items:center;justify-content:center;"
@@ -249,7 +249,7 @@ def render() -> None:
                 showlegend=False,
             )
         )
-        c1.plotly_chart(fig, use_container_width=True)
+        c1.plotly_chart(fig, width='stretch')
     else:
         c1.markdown(
             f"<div style='height:{CHART_HEIGHT}px;display:flex;align-items:center;justify-content:center;"
@@ -296,7 +296,7 @@ def render() -> None:
                 legend=LEGEND_BOTTOM,
             )
         )
-        c2.plotly_chart(fig, use_container_width=True)
+        c2.plotly_chart(fig, width='stretch')
     else:
         c2.markdown(
             f"<div style='height:{CHART_HEIGHT}px;display:flex;align-items:center;justify-content:center;"
@@ -358,4 +358,4 @@ def render() -> None:
         "investment_multiple": "Multiple",
         "age_years": "Âge (ans)",
     })
-    st.dataframe(disp, hide_index=True, use_container_width=True)
+    st.dataframe(disp, hide_index=True, width='stretch')

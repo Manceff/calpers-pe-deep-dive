@@ -59,7 +59,7 @@ def render() -> None:
         title=dict(text="Capital engagé par nature", font=dict(size=14)),
         showlegend=False, height=360,
     )
-    c1.plotly_chart(fig, use_container_width=True)
+    c1.plotly_chart(fig, width='stretch')
 
     c1.markdown(
         f"<div style='font-size:0.85rem;color:#5a5a5a;margin-top:0.3rem'>"
@@ -88,7 +88,7 @@ def render() -> None:
         xaxis_title="", yaxis_title="% du capital engagé",
         height=360, hovermode="x unified",
     )
-    c2.plotly_chart(fig2, use_container_width=True)
+    c2.plotly_chart(fig2, width='stretch')
 
     st.divider()
 
@@ -116,7 +116,7 @@ def render() -> None:
             xaxis_title="", yaxis_title="USD",
             height=400, hovermode="x unified",
         )
-        c1.plotly_chart(fig, use_container_width=True)
+        c1.plotly_chart(fig, width='stretch')
 
     style_evo = q("""
         SELECT as_of_date, theme_style, committed
@@ -138,7 +138,7 @@ def render() -> None:
             xaxis_title="", yaxis_title="USD",
             height=400, hovermode="x unified",
         )
-        c2.plotly_chart(fig, use_container_width=True)
+        c2.plotly_chart(fig, width='stretch')
 
     st.divider()
 
@@ -185,4 +185,4 @@ def render() -> None:
         "tvpi": "TVPI",
         "median_irr": "IRR médian",
     })
-    st.dataframe(top_gps_disp, hide_index=True, use_container_width=True)
+    st.dataframe(top_gps_disp, hide_index=True, width='stretch')

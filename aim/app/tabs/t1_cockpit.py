@@ -90,7 +90,7 @@ def render() -> None:
         xaxis_title="", yaxis_title="Md $",
         hovermode="x unified", height=400,
     )
-    st.plotly_chart(fig1, use_container_width=True)
+    st.plotly_chart(fig1, width='stretch')
 
     fig2 = go.Figure()
     fig2.add_trace(go.Scatter(
@@ -117,4 +117,4 @@ def render() -> None:
         yaxis2=dict(title="IRR médian (%)", overlaying="y", side="right",
                     showgrid=False, linecolor="#dad6cf"),
     )
-    st.plotly_chart(fig2, use_container_width=True)
+    st.plotly_chart(fig2, width='stretch')

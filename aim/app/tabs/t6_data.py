@@ -87,7 +87,7 @@ def render() -> None:
         "net_irr": "Net IRR",
         "investment_multiple": "Multiple",
     })
-    st.dataframe(disp, hide_index=True, use_container_width=True, height=620)
+    st.dataframe(disp, hide_index=True, width='stretch', height=620)
 
     # Téléchargement CSV (données brutes non formatées)
     csv = data.to_csv(index=False).encode("utf-8")

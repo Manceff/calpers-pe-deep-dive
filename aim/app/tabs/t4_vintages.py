@@ -74,7 +74,7 @@ def render() -> None:
             xaxis_title="Vintage year", yaxis_title="IRR (%)",
             height=440, hovermode="closest", showlegend=False,
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width='stretch')
 
     st.markdown("### Évolution de l'IRR médian par vintage × snapshot")
 
@@ -106,7 +106,7 @@ def render() -> None:
             xaxis_title="Snapshot", yaxis_title="Vintage year",
             height=500,
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width='stretch')
         st.markdown(
             "<div style='font-size:0.78rem;color:#9a9a9a;margin-top:0.3rem'>"
             "Filtre : vintages présents dans au moins 4 snapshots avec au moins 3 fonds matures. "
@@ -152,7 +152,7 @@ def render() -> None:
                     showgrid=False, linecolor="#dad6cf"),
         height=440, hovermode="x unified",
     )
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width='stretch')
 
     st.divider()
 
@@ -189,7 +189,7 @@ def render() -> None:
         title=dict(text="TVPI médian par âge", font=dict(size=14)),
         height=400, hovermode="x unified",
     )
-    c1.plotly_chart(fig, use_container_width=True)
+    c1.plotly_chart(fig, width='stretch')
 
     fig = px.line(
         sub, x="age_floor", y="median_dpi", color="vintage_year",
@@ -202,4 +202,4 @@ def render() -> None:
         title=dict(text="DPI médian par âge", font=dict(size=14)),
         height=400, hovermode="x unified",
     )
-    c2.plotly_chart(fig, use_container_width=True)
+    c2.plotly_chart(fig, width='stretch')
