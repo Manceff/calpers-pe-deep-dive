@@ -1,8 +1,6 @@
 """T5 PME — Public Market Equivalent vs S&P 500 TR."""
 from __future__ import annotations
 
-import math
-
 import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
@@ -10,12 +8,6 @@ import streamlit as st
 from aim.app.config import COLORS, PLOTLY_LAYOUT
 from aim.app.format_utils import fmt_int, fmt_pct
 from aim.app.loaders import q
-
-
-def _fmt_alpha(x: float | None) -> str:
-    if x is None or (isinstance(x, float) and math.isnan(x)):
-        return "—"
-    return f"{x * 100:.1f}%"
 
 
 def render() -> None:

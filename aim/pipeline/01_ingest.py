@@ -131,21 +131,38 @@ def harmonize_vintage_year(master: pd.DataFrame) -> pd.DataFrame:
 def merge_footnote_variants(master: pd.DataFrame) -> pd.DataFrame:
     """Fusionne UNIQUEMENT les vrais footnotes PDF, pas les numéros de série.
 
-    Règle : fusionne '<base> N' → '<base>' SEULEMENT si :
-      - N ∈ {1, 2} (typique d'un footnote bas de page)
+    Règle A (série numérotée) : fusionne '<base> N' → '<base>' si :
+      - N ∈ {1, 2}
       - le DERNIER token de '<base>' est lui-même un numéro de série (roman ou
         arabe) — donc '<base>' a déjà sa numérotation, ce qui prouve que le
         chiffre trailing est un footnote (et pas une série).
+        Ex: 'permira iv 2' → 'permira iv' (le 2 est un footnote, IV est la série).
 
-    Évite le bug où '57 stars global opportunities fund 2' (= Fund II, série
-    distincte de Fund I) était fusionné à tort avec '57 stars global
-    opportunities fund'. À ce stade on accepte qu'un footnote dont le base
-    n'a pas de série explicite (ex: 'generation capital 1') reste séparé —
-    safety > propreté.
+    Règle B (footnote collé) : fusionne '<base> N' → '<base>' si :
+      - N ∈ {1, 2}
+      - le fund_name source porte le digit **collé** au texte (sans espace),
+        donc un footnote PDF indiscutable (ex: 'Generation Capital Partners, L.P.1')
+      - et '<base>' existe ailleurs dans le dataset.
+
+    Évite le bug où '57 stars global opportunities fund 2' (= Fund II) était
+    fusionné à tort avec '57 stars global opportunities fund' : ce cas a un
+    espace avant le digit dans le nom source ('Fund 2'), donc règle B ne match
+    pas, et règle A non plus ('fund' n'est pas roman/arabic).
     """
     ROMAN_OR_ARABIC = re.compile(r"^([ivxlcdm]+|[ivxlcdm]+[\-]?[a-z]|\d+)$",
                                   re.IGNORECASE)
     keys = set(master["fund_key"].unique())
+
+    # Pour règle B : map fund_key → True si AU MOINS un fund_name source
+    # a le digit final collé (pas d'espace avant le digit).
+    tight_digit_re = re.compile(r"\S\d$")  # caractère non-espace immédiatement avant le digit final
+    has_tight_footnote: dict[str, bool] = {}
+    for fk, fn in zip(master["fund_key"], master["fund_name"]):
+        if fk in has_tight_footnote:
+            continue
+        if fn and tight_digit_re.search(fn.rstrip()):
+            has_tight_footnote[fk] = True
+
     remap: dict[str, str] = {}
     for k in keys:
         m = re.match(r"^(.+?)\s(\d)$", k)
@@ -154,10 +171,15 @@ def merge_footnote_variants(master: pd.DataFrame) -> pd.DataFrame:
         base, digit = m.group(1), m.group(2)
         if digit not in {"1", "2"}:
             continue
+        if base not in keys:
+            continue  # pas de base co-existante → rien à fusionner
         last_tok = base.split()[-1] if base else ""
-        if not ROMAN_OR_ARABIC.match(last_tok):
-            continue  # base n'a pas de série → on ne risque pas la fusion
-        if base in keys:
+        # Règle A : la base se termine par un numéro de série explicite
+        if ROMAN_OR_ARABIC.match(last_tok):
+            remap[k] = base
+            continue
+        # Règle B : le fund_name source porte le digit collé (footnote indiscutable)
+        if has_tight_footnote.get(k, False):
             remap[k] = base
     if remap:
         master = master.copy()
