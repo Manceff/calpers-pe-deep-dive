@@ -1,6 +1,8 @@
 """Chargement DuckDB avec cache Streamlit. Une connexion read-only partagée."""
 from __future__ import annotations
 
+import os
+
 import duckdb
 import pandas as pd
 import streamlit as st
@@ -9,9 +11,14 @@ from aim.app.config import DB_PATH
 
 
 @st.cache_resource
-def get_con() -> duckdb.DuckDBPyConnection:
-    """Connexion read-only persistante (singleton)."""
+def _con_for_mtime(mtime: float) -> duckdb.DuckDBPyConnection:
     return duckdb.connect(str(DB_PATH), read_only=True)
+
+
+def get_con() -> duckdb.DuckDBPyConnection:
+    # mtime sert de clé de cache : quand Streamlit Cloud écrase aim.duckdb au déploiement,
+    # la clé change → cache_resource rouvre le fichier au lieu de garder un handle stale.
+    return _con_for_mtime(os.path.getmtime(DB_PATH))
 
 
 @st.cache_data(ttl=3600, show_spinner=False)
