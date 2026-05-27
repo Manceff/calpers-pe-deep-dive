@@ -11,6 +11,10 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
+from aim.app.bootstrap_db import ensure_db  # noqa: E402
+
+ensure_db()
+
 import pandas as pd  # noqa: E402
 import streamlit as st  # noqa: E402
 

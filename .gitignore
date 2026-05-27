@@ -12,12 +12,14 @@ venv/
 .env
 .env.local
 
-# Data artifacts WAL et review (regenerables au runtime)
+# Data artifacts régénérés au runtime par aim/app/bootstrap_db.py
+aim/data/*.duckdb
 aim/data/*.duckdb.wal
 aim/data/llm_review.csv
-# NB : master_long.parquet, dim_fund.parquet et aim.duckdb sont VOLONTAIREMENT
-# versionnés pour permettre à Streamlit Cloud de démarrer sans relancer le
-# pipeline. Les snapshots CalPERS sont figés à 2025-09-30 — pas de drift.
+# NB : master_long.parquet, dim_fund.parquet et index_tr.csv RESTENT versionnés.
+# Ils servent au bootstrap qui reconstruit aim.duckdb au démarrage de l'app
+# (évite les bugs de cache disque Streamlit Cloud sur fichier binaire).
+# Les snapshots CalPERS sont figés à 2025-09-30 — pas de drift.
 
 # Streamlit
 .streamlit/secrets.toml
